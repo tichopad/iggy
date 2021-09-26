@@ -1,0 +1,15 @@
+overwrite: true
+schema: 'packages/api/src/graphql/schema/**/*.graphql'
+documents: null
+generates:
+  packages/api/src/generated/types.ts:
+    config:
+      internalResolversPrefix: ''
+      useIndexSignature: true
+      noSchemaStitching: true
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+  packages/api/src/generated/schema.ts:
+    plugins:
+      - '@iggy/codegen-plugin-schema'

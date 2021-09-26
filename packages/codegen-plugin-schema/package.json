@@ -1,0 +1,14 @@
+{
+  "name": "@iggy/codegen-plugin-schema",
+  "packageManager": "yarn@3.0.1",
+  "main": "dist/plugin.js",
+  "private": true,
+  "scripts": {
+    "build": "npx esbuild src/plugin.ts --outdir=dist --sourcemap --minify --format=cjs",
+    "start": "yarn run build --watch",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "graphql": "^15.5.3"
+  }
+}

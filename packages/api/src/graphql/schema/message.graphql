@@ -1,0 +1,6 @@
+type Message {
+  id: ID!
+  body: String
+  timestamp: Int
+  meta: String
+}

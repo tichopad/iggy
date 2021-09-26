@@ -1,0 +1,25 @@
+{
+  "name": "@iggy/api",
+  "private": true,
+  "packageManager": "yarn@3.0.1",
+  "scripts": {
+    "build": "serverless package",
+    "start": "serverless offline",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^8.2.0",
+    "@middy/core": "^2.5.1",
+    "@middy/error-logger": "^2.5.1",
+    "@middy/http-json-body-parser": "^2.5.1",
+    "@middy/http-response-serializer": "^2.5.1",
+    "@middy/http-security-headers": "^2.5.1",
+    "@middy/input-output-logger": "^2.5.1",
+    "@middy/validator": "^2.5.1",
+    "graphql": "^15.5.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.83",
+    "@types/json-schema": "^7.0.9"
+  }
+}

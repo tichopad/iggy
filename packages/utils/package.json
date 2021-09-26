@@ -1,0 +1,6 @@
+{
+  "name": "@iggy/utils",
+  "packageManager": "yarn@3.0.1",
+  "private": true,
+  "main": "src/index.ts"
+}

@@ -1,0 +1,52 @@
+{
+  "name": "iggy",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "api": "yarn workspace @iggy/api",
+    "codegen-plugin-schema": "yarn workspace @iggy/codegen-plugin-schema",
+    "utils": "yarn workspace @iggy/utils",
+    "web": "yarn workspace @iggy/web",
+    "build": "graphql-codegen && yarn workspaces foreach -ptiv run build",
+    "typecheck": "yarn workspaces foreach -ptiv run tsc --noEmit",
+    "lint": "eslint --fix \"./packages/*/src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"./packages/*/src/**/*.{ts,tsx,md}\"",
+    "check": "yarn run typecheck && concurrently -n \"eslint,prettier\" \"yarn run lint\" \"yarn run format\"",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.2.0",
+    "@graphql-codegen/typescript": "2.2.0",
+    "@graphql-codegen/typescript-resolvers": "2.2.0",
+    "@types/concurrently": "^6",
+    "@types/eslint": "^7",
+    "@types/jest": "^27.0.1",
+    "@types/prettier": "^2",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "concurrently": "^6.2.1",
+    "esbuild": "^0.12.26",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "graphql": "^15.5.3",
+    "jest": "^27.2.0",
+    "prettier": "^2.3.2",
+    "serverless": "^2.57.0",
+    "serverless-esbuild": "^1.17.1",
+    "serverless-offline": "^8.1.0",
+    "ts-essentials": "^8.1.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.2"
+  }
+}

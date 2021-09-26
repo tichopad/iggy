@@ -1,0 +1,28 @@
+service: graphql-lambda
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+
+package:
+  individually: true
+  patterns:
+    - src/graphql/schema/**/*.graphql
+
+functions:
+  graphql:
+    handler: src/main.handler
+    events:
+      - http:
+          path: /graphql
+          method: post
+          cors: true

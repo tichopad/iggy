@@ -1,0 +1,4 @@
+type Query {
+  hello: String
+  messages(count: Int): [Message]
+}
