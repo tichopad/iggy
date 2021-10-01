@@ -40,7 +40,9 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
-        project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
+        project: ['./tsconfig.json', './packages/*/tsconfig.eslint.json', './packages/*/tsconfig.json'],
+        sourceType: 'module',
+        tsconfigRootDir: __dirname,
       },
       extends: [
         'plugin:@typescript-eslint/recommended',

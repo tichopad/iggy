@@ -1,5 +1,6 @@
 {
   "name": "@iggy/api",
+  "version": "0.0.0",
   "private": true,
   "packageManager": "yarn@3.0.1",
   "scripts": {
@@ -9,6 +10,7 @@
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
+    "@iggy/utils": "*",
     "@middy/core": "^2.5.1",
     "@middy/error-logger": "^2.5.1",
     "@middy/http-json-body-parser": "^2.5.1",

@@ -5,6 +5,6 @@ const tsconfig = require('../../tsconfig.json');
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   ...base,
-  displayName: 'GraphQL Codegen Schema Plugin',
+  displayName: 'Utilities',
   moduleNameMapper: pathsToModuleNameMapper(tsconfig.compilerOptions.paths, { prefix: '<rootDir>/../' }),
 };

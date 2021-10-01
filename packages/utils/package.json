@@ -1,6 +1,13 @@
 {
   "name": "@iggy/utils",
+  "version": "0.0.0",
   "packageManager": "yarn@3.0.1",
   "private": true,
-  "main": "src/index.ts"
+  "main": "dist/index",
+  "type": "module",
+  "scripts": {
+    "build": "yarn run clean && yarn run compile",
+    "clean": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
+    "compile": "tsc -p tsconfig.build.json"
+  }
 }

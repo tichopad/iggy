@@ -12,6 +12,7 @@ custom:
   esbuild:
     bundle: true
     minify: true
+    sourcemap: true
 
 package:
   individually: true

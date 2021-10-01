@@ -1,6 +1,10 @@
+.esbuild
+.serverless
 .vscode
 .yarn
 .yarnrc
 
 dist
 node_modules
+
+*.tsbuildinfo

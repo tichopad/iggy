@@ -1,6 +1,6 @@
 {
   "name": "iggy",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "workspaces": [
@@ -11,7 +11,8 @@
     "codegen-plugin-schema": "yarn workspace @iggy/codegen-plugin-schema",
     "utils": "yarn workspace @iggy/utils",
     "web": "yarn workspace @iggy/web",
-    "build": "graphql-codegen && yarn workspaces foreach -ptiv run build",
+    "codegen": "yarn codegen-plugin-schema run build && graphql-codegen",
+    "build": "yarn run codegen && yarn workspaces foreach -ptiv run build",
     "typecheck": "yarn workspaces foreach -ptiv run tsc --noEmit",
     "lint": "eslint --fix \"./packages/*/src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"./packages/*/src/**/*.{ts,tsx,md}\"",
