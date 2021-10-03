@@ -10,14 +10,7 @@
     "api": "yarn workspace @iggy/api",
     "codegen-plugin-schema": "yarn workspace @iggy/codegen-plugin-schema",
     "utils": "yarn workspace @iggy/utils",
-    "web": "yarn workspace @iggy/web",
-    "codegen": "yarn codegen-plugin-schema run build && graphql-codegen",
-    "build": "yarn run codegen && yarn workspaces foreach -ptiv run build",
-    "typecheck": "yarn workspaces foreach -ptiv run tsc --noEmit",
-    "lint": "eslint --fix \"./packages/*/src/**/*.{ts,tsx}\"",
-    "format": "prettier --write \"./packages/*/src/**/*.{ts,tsx,md}\"",
-    "check": "yarn run typecheck && concurrently -n \"eslint,prettier\" \"yarn run lint\" \"yarn run format\"",
-    "test": "jest"
+    "web": "yarn workspace @iggy/web"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.2.0",
