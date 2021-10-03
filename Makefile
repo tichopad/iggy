@@ -14,7 +14,7 @@ test:
 
 # Static analysis
 
-check: typecheck
+check: typechecke
 	make --jobs 2 --keep-going format lint
 
 format:
