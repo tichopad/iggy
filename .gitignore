@@ -6,5 +6,6 @@
 
 dist
 node_modules
+yarn.build-error.log
 
 *.tsbuildinfo

@@ -6,8 +6,10 @@
   "main": "dist/index",
   "type": "module",
   "scripts": {
-    "build": "yarn run clean && yarn run compile",
-    "clean": "rm -rf ./dist ./tsconfig.build.tsbuildinfo",
-    "compile": "tsc -p tsconfig.build.json"
+    "build": "yarn run --top-level tsc -p tsconfig.build.json"
+  },
+  "yarn.build": {
+    "input": "src",
+    "output": "dist"
   }
 }

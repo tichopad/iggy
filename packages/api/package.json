@@ -4,9 +4,9 @@
   "private": true,
   "packageManager": "yarn@3.0.1",
   "scripts": {
-    "build": "serverless package",
-    "start": "serverless offline",
-    "test": "jest"
+    "build": "yarn run --top-level serverless package",
+    "start": "yarn run --top-level serverless offline",
+    "test": "yarn run --top-level jest"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
@@ -23,5 +23,9 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.83",
     "@types/json-schema": "^7.0.9"
+  },
+  "yarn.build": {
+    "input": "src",
+    "output": ".serverless"
   }
 }
