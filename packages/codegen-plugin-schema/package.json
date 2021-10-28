@@ -5,9 +5,10 @@
   "main": "dist/plugin.js",
   "private": true,
   "scripts": {
-    "build": "yarn run --top-level esbuild src/plugin.ts --outdir=dist --tsconfig=tsconfig.build.json --format=cjs --minify --sourcemap",
+    "build": "yarn run -T esbuild src/plugin.ts --outdir=dist --format=cjs --minify --sourcemap",
     "start": "yarn run build --watch",
-    "test": "yarn run --top-level jest"
+    "test": "yarn run -T jest",
+    "typecheck": "yarn run -T tsc --noEmit"
   },
   "peerDependencies": {
     "graphql": "^15.5.3"

@@ -2,9 +2,8 @@ import { double } from '@iggy/utils';
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import type { ReactNode } from 'react';
 
-function App(): ReactNode {
+function App(): JSX.Element {
   const [count, setCount] = useState(1);
 
   return (

@@ -4,7 +4,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "typecheck": "yarn run -T tsc --noEmit"
   },
   "dependencies": {
     "@iggy/utils": "*",

@@ -18,10 +18,12 @@ check: typecheck
 	make --jobs 2 --keep-going format lint
 
 format:
-	yarn run prettier --write "./packages/*/src/**/*.{ts,tsx,md}"
+	yarn run prettier --loglevel silent --write "./packages/*/src/**/*.{ts,tsx,md}"
 
 lint:
-	yarn run eslint --fix "./packages/*/src/**/*.{ts,tsx}"
+	yarn run eslint --cache --fix "./packages/*/src/**/*.{ts,tsx}"
 
+# "yarn workspaces foreach -pv run typecheck" ignores dependency tree but has uglier output
+# "yarn build -c typecheck" checks dependents first, but ignores already checked ones
 typecheck:
-	yarn workspaces foreach -ptiv run tsc --noEmit
+	yarn build -c typecheck

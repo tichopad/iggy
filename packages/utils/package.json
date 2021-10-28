@@ -3,13 +3,8 @@
   "version": "0.0.0",
   "packageManager": "yarn@3.0.1",
   "private": true,
-  "main": "dist/index",
-  "type": "module",
+  "main": "src/index",
   "scripts": {
-    "build": "yarn run --top-level tsc -p tsconfig.build.json"
-  },
-  "yarn.build": {
-    "input": "src",
-    "output": "dist"
+    "typecheck": "yarn run -T tsc --noEmit"
   }
 }

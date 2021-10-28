@@ -40,7 +40,7 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
-        project: ['./tsconfig.json', './packages/*/tsconfig.eslint.json', './packages/*/tsconfig.json'],
+        project: ['./packages/*/tsconfig.eslint.json', './packages/*/tsconfig.json'],
         sourceType: 'module',
         tsconfigRootDir: __dirname,
       },

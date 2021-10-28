@@ -1,4 +1,5 @@
 .esbuild
+.eslintcache
 .serverless
 .vscode
 .yarn

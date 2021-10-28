@@ -4,9 +4,10 @@
   "private": true,
   "packageManager": "yarn@3.0.1",
   "scripts": {
-    "build": "yarn run --top-level serverless package",
-    "start": "yarn run --top-level serverless offline",
-    "test": "yarn run --top-level jest"
+    "build": "yarn run -T serverless package",
+    "start": "yarn run -T serverless offline",
+    "test": "yarn run -T jest",
+    "typecheck": "yarn run -T tsc --noEmit"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
