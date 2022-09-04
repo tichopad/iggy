@@ -1,29 +1,80 @@
 service: graphql-lambda
 
-provider:
-  name: aws
-  runtime: nodejs14.x
-
-plugins:
-  - serverless-esbuild
-  - serverless-offline
-
 custom:
+  defaultRegion: us-east-2
+  defaultNodeEnv: dev
+  dynamodb:
+    seed:
+      domain:
+        sources:
+          - table: ${self:provider.environment.TABLE_MAIN}
+            sources: [./seed/domain.json]
+    stages:
+      - dev
+    start:
+      inMemory: true
+      migrate: true
+      seed: true
   esbuild:
     bundle: true
     minify: true
     sourcemap: true
 
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ${self:custom.defaultRegion}
+  stage: ${env:NODE_ENV, self:custom.defaultNodeEnv}
+  environment:
+    NODE_ENV: ${env:NODE_ENV, self:custom.defaultNodeEnv}
+    REGION: ${self:provider.region}
+    TABLE_MAIN: ${self:service}-main-${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/*'
+
+plugins:
+  - serverless-esbuild
+  - serverless-dynamodb-local
+  - serverless-offline
+
 package:
   individually: true
-  patterns:
-    - src/graphql/schema/**/*.graphql
 
 functions:
   graphql:
     handler: src/main.handler
+    timeout: 60
+    memorySize: 2048
     events:
       - http:
           path: /graphql
           method: post
           cors: true
+
+# TODO: Consider moving persistent resources to a separate config/package
+resources:
+  Resources:
+    MainTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
+      Properties:
+        TableName: ${self:provider.environment.TABLE_MAIN}
+        KeySchema:
+          - AttributeName: 'PK'
+            KeyType: 'HASH'
+          - AttributeName: 'SK'
+            KeyType: 'RANGE'
+        AttributeDefinitions:
+          - AttributeName: 'PK'
+            AttributeType: 'S'
+          - AttributeName: 'SK'
+            AttributeType: 'S'
+        BillingMode: 'PAY_PER_REQUEST'

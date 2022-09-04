@@ -5,7 +5,8 @@
   "packageManager": "yarn@3.0.1",
   "scripts": {
     "build": "yarn run -T serverless package",
-    "start": "yarn run -T serverless offline",
+    "generate-seed": "yarn run -T esr ./seed/generate-domain.ts",
+    "start": "yarn run -T serverless offline start",
     "test": "yarn run -T jest",
     "typecheck": "yarn run -T tsc --noEmit"
   },
@@ -23,7 +24,9 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.83",
-    "@types/json-schema": "^7.0.9"
+    "@types/faker": "^5",
+    "@types/json-schema": "^7.0.9",
+    "faker": "^5.5.3"
   },
   "yarn.build": {
     "input": "src",
